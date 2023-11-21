@@ -20,11 +20,9 @@ function UserId({ setStateUserId, setAvatarSelected }) {
       }
     }
   };
-
   const handleAvatarSelected = (avatarUrl) => {
     setSelectedAvatar(avatarUrl);
   };
-
   const avatarImages = [avatar1, avatar2, avatar3, avatar4];
 
   return (
