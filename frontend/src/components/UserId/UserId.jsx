@@ -9,6 +9,7 @@ import avatar4 from "../Avatar/Avatar.img/avatar4.png";
 
 function UserId({ setStateUserId, setAvatarSelected }) {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const avatarImages = [avatar1, avatar2, avatar3, avatar4];
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -23,7 +24,6 @@ function UserId({ setStateUserId, setAvatarSelected }) {
   const handleAvatarSelected = (avatarUrl) => {
     setSelectedAvatar(avatarUrl);
   };
-  const avatarImages = [avatar1, avatar2, avatar3, avatar4];
 
   return (
     <div className={styles["blur-container"]}>
