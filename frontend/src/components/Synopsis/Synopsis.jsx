@@ -53,5 +53,5 @@ Synopsis.propTypes = {
   }),
   timeDifficulty: PropTypes.string.isRequired,
   // eslint-disable-next-line react/require-default-props
-  userId: PropTypes.func, // Correction ici
+  userId: PropTypes.func,
 };
