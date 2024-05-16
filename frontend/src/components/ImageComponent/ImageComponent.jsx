@@ -12,7 +12,7 @@ function ImageComponent() {
       userId={userId}
       setNext={setNext}
       next={next}
-      timeDifficulty={timeDifficulty}
+      timeDifficulty={parseInt(timeDifficulty, 10)}
     />
   );
 }

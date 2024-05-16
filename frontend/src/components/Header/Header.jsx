@@ -8,7 +8,7 @@ function Header({ userId, score, selectedAvatar }) {
       <h2 className={styles.logoText}>API-Quiz</h2>
       <div className={styles.userAndScore}>
         <p className={styles.theUser}>{userId}</p>
-        {selectedAvatar !== null && (
+        {selectedAvatar && (
           <img
             className={styles.avatar}
             src={selectedAvatar}
@@ -23,12 +23,13 @@ function Header({ userId, score, selectedAvatar }) {
 
 Header.defaultProps = {
   userId: "",
+  selectedAvatar: null,
 };
 
 Header.propTypes = {
   userId: PropTypes.string,
   score: PropTypes.number.isRequired,
-  selectedAvatar: PropTypes.string.isRequired,
+  selectedAvatar: PropTypes.string,
 };
 
 export default Header;

@@ -1,5 +1,5 @@
-import { Outlet, useNavigate } from "react-router-dom";
 import React, { useState, useRef } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import UserId from "./components/UserId/UserId";
 import styles from "./App.module.css";
 import Api from "./components/Api/Api";
@@ -11,8 +11,7 @@ function App() {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [answers, setAnswers] = useState("");
   const [answersReturn, setAnswersReturn] = useState(true);
-  // État local pour gérer le pseudo de l'utilisateur
-  const [userId, setUserId] = useState(null);
+  const [userId, setUserId] = useState(""); // Modifié la valeur par défaut
   const [film, setFilm] = useState({
     backdrop_path: "xxx",
     original_language: "en",
@@ -22,10 +21,6 @@ function App() {
   const [please, setPlease] = useState(false);
   const [next, setNext] = useState(false);
   const reset = useRef(true);
-  // Fonction appelée lorsque l'utilisateur entre un pseudo
-  const handleUserIdEntered = (pseudo) => {
-    setUserId(pseudo);
-  };
   const navigate = useNavigate();
   const [timeDifficulty, setTimeDifficulty] = useState("20");
   const [burger, setBurger] = useState(false);
@@ -40,16 +35,15 @@ function App() {
   }
 
   function getColor() {
-    if (color === true) {
-      return "#03b309";
-    }
-    return "red";
+    return color ? "#03b309" : "red";
   }
+
   return (
     <div className={styles.appAllContainer}>
       <select
         id={styles.difficulty}
         onChange={(e) => setTimeDifficulty(e.target.value)}
+        value={timeDifficulty} // Ajout de la valeur sélectionnée
       >
         <option value="">--Difficulty ?--</option>
         <option value="30">easy (30s)</option>
@@ -71,7 +65,7 @@ function App() {
         <div className={styles.appHeader}>
           <Header
             userId={userId}
-            score={score}
+            score={score} // Ajout de la prop `score`
             selectedAvatar={selectedAvatar}
           />
         </div>
@@ -124,7 +118,7 @@ function App() {
           ) : null}
           {userId === null || selectedAvatar === null ? (
             <UserId
-              setStateUserId={handleUserIdEntered}
+              setStateUserId={setUserId}
               setAvatarSelected={setSelectedAvatar}
             />
           ) : null}

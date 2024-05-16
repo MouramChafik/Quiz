@@ -17,11 +17,8 @@ export default function LogicAnswers({
   const TOLERANCE_THRESHOLD = 0.8;
 
   function replace(string, arrayString, beforeReplace, afterReplace) {
-    if (string.includes(beforeReplace) === true) {
-      if (
-        arrayString.includes(string.replace(beforeReplace, afterReplace)) ===
-        false
-      ) {
+    if (string.includes(beforeReplace)) {
+      if (!arrayString.includes(string.replace(beforeReplace, afterReplace))) {
         arrayString.push(string.replace(beforeReplace, afterReplace));
       }
       return arrayString;
@@ -30,13 +27,13 @@ export default function LogicAnswers({
   }
 
   function declinations(string, arrayString, separator) {
-    if (string.includes(separator) === true) {
+    if (string.includes(separator)) {
       const arr = string.split(separator);
-      if (arrayString.includes(arr[0].trim()) === false) {
+      if (!arrayString.includes(arr[0].trim())) {
         arrayString.push(arr[0].trim());
       }
 
-      if (arrayString.includes(arr[1].trim()) === false) {
+      if (!arrayString.includes(arr[1].trim())) {
         arrayString.push(arr[1].trim());
       }
 
@@ -44,6 +41,7 @@ export default function LogicAnswers({
     }
     return string;
   }
+
   function test(solution, response) {
     const lowerSolution = solution.toLowerCase();
     const lowerResponse = response.toLowerCase();
@@ -90,15 +88,16 @@ export default function LogicAnswers({
 
     for (let i = 0; i < arraySolution.length; i += 1) {
       for (let j = 0; j < arrayResponse.length; j += 1) {
-        if (test(arraySolution[i], arrayResponse[j]) === true) {
+        if (test(arraySolution[i], arrayResponse[j])) {
           return true;
         }
       }
     }
     return false;
   }
+
   useEffect(() => {
-    if (verify(film.title, answers) === true && next === false) {
+    if (verify(film.title, answers) && !next) {
       setScore(score + 1);
       setPlease(false);
       setNext(true);
@@ -110,6 +109,8 @@ export default function LogicAnswers({
     }
     setCheck(false);
   }, []);
+
+  return null; // Remplacer par votre logique JSX si nécessaire
 }
 
 LogicAnswers.propTypes = {
@@ -128,7 +129,6 @@ LogicAnswers.propTypes = {
     video: PropTypes.bool,
     vote_average: PropTypes.number,
     vote_count: PropTypes.number,
-    setNext: PropTypes.func.isRequired,
   }),
   score: PropTypes.number.isRequired,
   setAnswersReturn: PropTypes.func.isRequired,
@@ -137,6 +137,8 @@ LogicAnswers.propTypes = {
   answers: PropTypes.string.isRequired,
   setCheck: PropTypes.func.isRequired,
   setPlease: PropTypes.func.isRequired,
+  setNext: PropTypes.func.isRequired,
+  next: PropTypes.bool.isRequired,
 };
 
 LogicAnswers.defaultProps = {

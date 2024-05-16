@@ -5,7 +5,7 @@ import Timer from "../timer/Timer";
 export default function Image({
   film,
   reset,
-  userId,
+  userId, // Modification ici
   setNext,
   next,
   timeDifficulty,
@@ -30,6 +30,7 @@ Image.defaultProps = {
     current: "waiting",
   },
 };
+
 Image.propTypes = {
   film: PropTypes.exact({
     title: PropTypes.string,
@@ -48,10 +49,11 @@ Image.propTypes = {
     vote_count: PropTypes.number,
   }),
   setNext: PropTypes.func.isRequired,
-  next: PropTypes.func.isRequired,
+  next: PropTypes.bool.isRequired,
   timeDifficulty: PropTypes.number.isRequired,
   reset: PropTypes.exact({
     current: PropTypes.bool.isRequired,
   }),
-  userId: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  userId: PropTypes.string,
 };
