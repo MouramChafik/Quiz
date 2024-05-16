@@ -28,7 +28,6 @@ Synopsis.defaultProps = {
     current: "waiting",
   },
 };
-
 Synopsis.propTypes = {
   film: PropTypes.exact({
     title: PropTypes.string,
@@ -47,11 +46,10 @@ Synopsis.propTypes = {
     vote_count: PropTypes.number,
   }),
   setNext: PropTypes.func.isRequired,
-  next: PropTypes.bool.isRequired,
+  next: PropTypes.func.isRequired,
   reset: PropTypes.exact({
     current: PropTypes.bool.isRequired,
   }),
   timeDifficulty: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  userId: PropTypes.func,
+  userId: PropTypes.func.isRequired,
 };
