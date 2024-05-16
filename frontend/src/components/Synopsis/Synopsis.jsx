@@ -47,11 +47,11 @@ Synopsis.propTypes = {
     vote_count: PropTypes.number,
   }),
   setNext: PropTypes.func.isRequired,
-  next: PropTypes.bool.isRequired, // Correction ici
+  next: PropTypes.bool.isRequired,
   reset: PropTypes.exact({
     current: PropTypes.bool.isRequired,
   }),
   timeDifficulty: PropTypes.string.isRequired,
   // eslint-disable-next-line react/require-default-props
-  userId: PropTypes.func, // Correction ici
+  userId: PropTypes.func,
 };
